@@ -1,8 +1,0 @@
-<!-- templates/survey/survey_list.html -->
-
-<h2>Surveys for {{ target_audience|capfirst }}</h2>
-<ul>
-  {% for survey in surveys %}
-    <li><a href="{% url 'survey_detail' survey.id %}">{{ survey.title }}</a></li>
-  {% endfor %}
-</ul>
