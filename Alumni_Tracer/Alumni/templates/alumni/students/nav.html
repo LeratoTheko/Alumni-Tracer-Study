@@ -1,0 +1,81 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'stylesheet/navbar.css' %}">
+
+<nav class="navbar bg-black" data-bs-theme="dark">
+    <div class="container-fluid" style="margin-left:50px;">
+        <a class="navbar-brand grid gap-0 column-gap-3 fw-bold" style="margin-right: 50px">
+            <img src="{% static 'images/download.png' %}" style="margin-right: 50px;" alt="Logo" width="150" height="70" class="d-inline-block align-text-middle">
+            STUDENTS PORTAL
+        </a>
+
+        <a class="navbar-brand"></a>
+        <form class="d-flex" role="search">
+            <a class="navbar-brand"></a>
+            <a class="navbar-brand"></a>
+            <a class="navbar-brand"></a>
+            <a href="career_services" class="btn btn-light fw-bold" style="margin-right:20px">CAREER SERVICES</a>
+            <a href="{% url 'home' %}" class="btn btn-light fw-bold" style="margin-right: 20px;">ALUMNI SITE</a>
+
+            {% if user.is_authenticated %}
+                <a href="" class="btn btn-danger me-2 fw-bold">Logout</a>
+            {% else %}
+                <a href="" class="btn btn-light me-2 fw-bold">Login</a>
+                <a href="" class="btn btn-light fw-bold">Register</a>
+            {% endif %}
+
+            <button id="notificationButton" class="btn btn-transparent fw-bold me-2" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Notifications">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+                </svg>
+            </button>
+        </form>
+    </div>
+
+
+
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNav" style="margin-left: 500px;">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="" style="color: #fff; font-weight: bold;">HOME</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #fff; font-weight: bold;">
+                        ACADEMICS
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="">Courses</a></li>
+                        <li><a class="dropdown-item" href="">Schedule</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="" style="color: #fff; font-weight: bold;">LIBRARY</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #fff; font-weight: bold;">
+                        SERVICES
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="">Career Center</a></li>
+                        <li><a class="dropdown-item" href="">Counseling Services</a></li>
+                        <li><a class="dropdown-item" href="">Health Center</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="" style="color: #fff; font-weight: bold;">EVENTS</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<!-- Bootstrap and other JS libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- JavaScript to show the search fields -->
+
