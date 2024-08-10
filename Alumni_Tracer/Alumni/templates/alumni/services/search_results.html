@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+{% include 'alumni/basetemplates/navbar.html' %}
+ <h2>Job Postings</h2>
+    {% if job_postings %}
+        {% for job_posting in job_postings %}
+            <div>{{ job_posting.job_title }}</div>
+            <!-- Display other job posting details as needed -->
+        {% endfor %}
+    {% else %}
+        <p>No job postings found.</p>
+    {% endif %}
+
+    <h2>Internship Postings</h2>
+    {% if internship_postings %}
+        {% for internship_posting in internship_postings %}
+            <div>{{ internship_posting.job_title }}</div>
+            <!-- Display other internship posting details as needed -->
+        {% endfor %}
+    {% else %}
+        <p>No internship postings found.</p>
+    {% endif %}
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

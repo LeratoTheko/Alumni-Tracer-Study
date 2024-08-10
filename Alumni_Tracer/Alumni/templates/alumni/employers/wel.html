@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .circle-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #007bff;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 9999;
+        }
+        .circle-icon img {
+            width: 100%;
+            border-radius: 50%;
+        }
+        .offcanvas {
+            background-color: #f8f9fa;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <nav class="navbar navbar-main navbar-expand-lg navbar-dark bg-body-tertiary fw-bold" data-bs-theme="dark">
+      <a class="navbar-brand">Career Services Employers Portal</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Internship Listings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Edit Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Hire</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Offer Internship</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Promote Business</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <h1>Welcome, {{ user.username }}</h1>
+    <h2>Employer Career Services</h2>
+    <ul>
+        <li><a href="{% url 'internship-list' %}">View Internship Listings</a></li>
+        <li><a href="{% url 'internship-create' %}">Create Internship Listing</a></li>
+        <!-- Add additional links/buttons for updating, deleting, etc. if needed -->
+    </ul>
+<!-- Display other welcome content here -->
+
+<!-- Small Image Circle to Trigger Off-canvas -->
+<div class="circle-icon" data-toggle="offcanvas" data-target="#editProfileOffcanvas">
+    <img src="path_to_profile_image" alt="Profile Image">
+</div>
+
+<!-- Off-canvas Edit Profile Form -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="editProfileOffcanvas" aria-labelledby="editProfileOffcanvasLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="editProfileOffcanvasLabel">Edit Profile</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <!-- Include your edit profile form here -->
+        <!-- For example: -->
+        <!-- <form action="{% url 'edit-profile' %}" method="post"> -->
+        <!-- Add form fields here -->
+        <!-- </form> -->
+    </div>
+</div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

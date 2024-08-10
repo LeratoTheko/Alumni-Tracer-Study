@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Registration</title>
+
+
+
+</head>
+<body style="background-color: #455A64; color: #fff;">
+    <div style="justify-content: center; padding: center;">
+        <h1>Alumni Registration</h1>
+        <p>
+            You must enter your student number to check yourself if you exist in University Career Services database. Only graduated students can be able to register in Career Connect Platform.
+        </p>
+
+
+        <br>
+
+        <p style="color: #E0E0E0;">
+            Please enter "None" if employment status is Unemployed
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-secondary btn-lg">Submit Employment Status</button>
+
+            {% if error_message %}
+            <p>{{ error_message }}</p>
+            {% endif %}
+        </form>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#id_employment_status').change(function() {
+                if ($(this).val() === 'Unemployed') {
+                    $('#id_company_name').val('No Company');
+                    $('#id_company_name').prop('readonly', true); // Optional: Make the field readonly
+                } else {
+                    $('#id_company_name').val(''); // Reset the field if not 'Unemployed'
+                    $('#id_company_name').prop('readonly', false); // Optional: Make the field editable
+                }
+            });
+        });
+</script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</body>
+</html>

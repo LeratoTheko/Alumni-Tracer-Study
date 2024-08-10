@@ -1,0 +1,19 @@
+<!-- internship_listing_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ listing.job_title }}</title>
+</head>
+<body>
+    <h1>{{ listing.job_title }}</h1>
+    <p>Description: {{ listing.description }}</p>
+    <p>Requirements: {{ listing.requirements }}</p>
+    <p>Duration: {{ listing.duration }}</p>
+    <p>Location: {{ listing.location }}</p>
+    <p>Deadline: {{ listing.deadline }}</p>
+    <a href="{% url 'internship-update' listing.pk %}">Edit</a>
+    <a href="{% url 'internship-delete' listing.pk %}">Delete</a>
+</body>
+</html>

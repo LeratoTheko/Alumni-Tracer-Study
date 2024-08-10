@@ -1,0 +1,120 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'stylesheet/navbar.css' %}">
+
+<nav class="navbar bg-black" data-bs-theme="dark">
+    <div class="container-fluid" style="margin-left:50px;">
+        <a class="navbar-brand grid gap-0 column-gap-3 fw-bold" style="margin-right: 50px">
+            <img src="{% static 'images/download.png' %}" style="margin-right: 50px;" alt="Logo" width="150" height="70" class="d-inline-block align-text-middle">
+            EMPLOYERS PORTAL
+        </a>
+
+        <a class="navbar-brand"></a>
+        <form class="d-flex" role="search">
+            <a class="navbar-brand"></a>
+            <a class="navbar-brand"></a>
+            <a class="navbar-brand"></a>
+            <a href="Career-services" class="btn btn-light fw-bold" style="margin-right:20px">CAREER SERVICES</a>
+            <a href="{% url 'home' %}" class="btn btn-light fw-bold" style="margin-right: 20px;">ALUMNI SITE</a>
+
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}" class="btn btn-danger me-2 fw-bold">Logout</a>
+                {% endif %}
+
+
+            <button id="notificationButton" class="btn btn-transparent fw-bold me-2" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Notifications">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+                </svg>
+            </button>
+        </form>
+    </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg bg-black" data-bs-theme="dark">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNav" style="margin-left: 500px;">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="employers" style="color: #fff; font-weight: bold;">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="post_job" style="color: #fff; font-weight: bold;">JOB POSTING</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="internship_posting" style="color: #fff; font-weight: bold;">INTERNSHIP OFFERING</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="alumni_profiles_list?show_search=true" id="alumni-profiles-link" style="color: #fff; font-weight: bold;">ALUMNI PROFILES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="available-jobs?show_search=true" id="available-jobs-link" style="color: #fff; font-weight: bold;">AVAILABLE JOBS</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="edit_profile" id="available-jbs-link" style="color: #fff; font-weight: bold;">Edit Profile</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="notificationModalLabel">Notifications</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Add your toast content here -->
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+                    <div class="toast-header">
+                        <strong class="mr-auto">Notification</strong>
+                        <button type="button" class="btn-close" data-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        Hello, this is a notification message!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- JavaScript to show the search fields -->
+
+
+
+
+
+<!-- Remove the duplicate jQuery script include and put this one at the end -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#search-form').submit(function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            var query = $('#query').val().trim(); // Get the search query
+            if (query !== '') {
+                // Send an AJAX GET request to the search URL
+                $.get('{% url 'search_alumni_profiles' %}', { query: query })
+                    .done(function(data) {
+                        $('.card-container').html(data); // Replace the profile container content with the filtered results
+                    })
+                    .fail(function() {
+                        alert('Failed to fetch search results.'); // Show an alert on failure
+                    });
+            }
+        });
+    });
+</script>
+

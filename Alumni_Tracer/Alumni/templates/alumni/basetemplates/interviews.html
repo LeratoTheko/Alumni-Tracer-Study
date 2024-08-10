@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Preparation Steps</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <!-- Additional Navigation Items -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">ALUMNI</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">GRADUATION ANALYSIS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">JOB STRATEGIES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">STUDENTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">LEAP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">EVENTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Search</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <h1 class="mb-4">Interview Preparation Steps</h1>
+
+        <!-- List of existing interview preparation steps -->
+        <ul class="list-group">
+            {% for step in steps %}
+            <li class="list-group-item">
+                <h5>{{ step.title }}</h5>
+                <p>{{ step.description }}</p>
+                <small>{{ step.notes }}</small>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white mt-5 py-3 fixed-bottom">
+        <div class="container text-center">
+            &copy; 2024 Interview Preparation Steps
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6o2wvcfEL7FqAa1a5F02sM7hxZm+d"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-Mk/1r5xPbF7PpK2b0zD2gV8wOrV5+Lcwo/aBxkfQc9adOjh7jDTLwe2IhqjwnExn"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
