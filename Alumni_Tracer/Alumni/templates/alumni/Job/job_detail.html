@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Details</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* Change the background color as needed */
+        }
+
+        .modal-content {
+            width: 80%;
+            max-width: 600px; /* Adjust the max-width as needed */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d; /* Change the button color as needed */
+            color: #fff;
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Change the button color as needed */
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Change the button hover color as needed */
+        }
+    </style>
+</head>
+<body>
+
+{% block title %}
+    Job Details - {{ job_posting.job_title }}
+{% endblock %}
+
+{% block content %}
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">{{ job_posting.job_title }}</h4>
+    </div>
+    <div class="modal-body">
+        <strong>Company:</strong> {{ job_posting.company }}<br>
+        <strong>Location:</strong> {{ job_posting.job_location }}<br>
+        <strong>Job Type:</strong> {{ job_posting.job_type }}<br>
+        <strong>Description:</strong> {{ job_posting.description|safe }}<br> <!-- Use safe filter here -->
+        <strong>Skills:</strong> {{ job_posting.skills }}<br>
+        <strong>Deadline:</strong> {{ job_posting.deadline }}<br>
+        <strong>Posted:</strong> {{ job_posting.created_at }}<br>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button><a href="{% url 'apply_job' job_posting.id %}" class="btn btn-primary" style="text-decoration:none">Apply Now</a></button>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

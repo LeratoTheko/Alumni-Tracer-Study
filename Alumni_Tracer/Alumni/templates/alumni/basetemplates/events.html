@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block tittle %}
+            Events
+        {% endblock tittle %}
+    </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    {% load static %}
+    <link rel="shortcut icon" type="x-icon" href="{% static 'images/download.png'%}">
+    <link rel="stylesheet" href="{% static 'stylesheet/loader.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesheet/event.css' %}">
+</head>
+<body>
+    <div class="loader_bg">
+        <div class="loader"></div>
+    </div>
+    {% include 'alumni/basetemplates/navbar.html' %}
+
+    <!-- Upcoming events !-->
+    <div>
+        <h1>
+            Upcoming Events
+        </h1>
+    </div>
+
+
+
+    <!-- Archived events !-->
+    <div>
+        <h1>
+            Archived Events
+        </h1>
+    </div>
+
+    <script>
+        setTimeout(function(){
+            $('loader_bg').fadeToggle();
+        }, 1500);
+    </script>
+
+    <link rel="stylesheet" href="{% static 'stylesheet/event.css' %}">
+
+
+    {% include 'alumni/basetemplates/navbar.html' %}
+
+ <div id="events-content" class="collapse">
+{% load static %}
+
+
+    <!-- Events content goes here -->
+    <div class="container mt-5">
+        <h1>Upcoming Events</h1>
+        <div class="container-events">
+          {% for EVENT in Events %}
+            <a href="" class="event-link">
+            <div class="event-card">
+             <div class="card">
+                  <div class="card event-card" style="width: 50%; flex-direction: column; justify-content: center;  align-items: center;  solid #ccc; background-color: #F5F5F5; border-radius: 20px;">
+                    <img src="{{ EVENT.image.url }}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ EVENT.title }}</h3>
+                        <p class="card-text"><strong>Date:</strong> {{ EVENT.start_time|date:"F j, Y" }}-{{ EVENT.end_time|date:"F j, Y" }}</p>
+                        <p class="card-text"><strong>Time:</strong> {{ EVENT.start_time|time:"g:i A" }} - {{ EVENT.end_time|time:"g:i A" }}</p>
+                        <p class="card-text"><strong>Location:</strong> {{ EVENT.location }}</p>
+                        <p class="card-text"><strong>Organizer:</strong> {{ EVENT.organizer }}</p>
+                        <p class="card-text">{{ EVENT.description }}</p>
+                        <a href="View More" class="btn btn-view-more" style="width: 50%">VIEW MORE></a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            </a>
+            {% if forloop.counter|divisibleby:3 %}
+                </div><div class="row">
+
+            {% endif %}
+          {% endfor %}
+    </div>
+    </div>
+    </div>
+
+
+<div id="entrepreneurship-content" class="collapse">
+<h1>Upcoming Entrepreneurship Events</h1>
+    {% load static %}
+     <div class="container-events">
+        <!-- Events content goes here -->
+         <div class="container mt-5">
+            {% for ENTREPRENEURSHIP in Entrepreneurships  %}
+                <a href="" class="event-link">
+                    <div class="event-card">
+                        <div class="card">
+                            <div class="card event-card" style="width: 100%; flex-direction: column; justify-content: center;  align-items: center;  solid #ccc; background-color: #F5F5F5; border-radius: 20px;">
+                                <img src="{{ ENTREPRENEURSHIP.Entrepreneurship_image.url }}" class="card-img-top" alt="">
+                                    <div class="card-body">
+                                        <h3 class="card-title">{{ ENTREPRENEURSHIP.Entrepreneurship_title }}</h3>
+                                        <p class="card-text"><strong>Date:</strong> {{ ENTREPRENEURSHIP.Entrepreneurship_start_time|date:"F j, Y" }}-{{ ENTREPRENEURSHIP.Entrepreneurship_end_time|date:"F j, Y" }}</p>
+                                        <p class="card-text"><strong>Time:</strong> {{ ENTREPRENEURSHIP.Entrepreneurship_start_time|time:"g:i A" }} - {{ ENTREPRENEURSHIP.Entrepreneurship_end_time|time:"g:i A" }}</p>
+                                        <p class="card-text"><strong>Location:</strong> {{ ENTREPRENEURSHIP.Entrepreneurship_location }}</p>
+                                        <p class="card-text"><strong>Organizer:</strong> {{ ENTREPRENEURSHIP.Entrepreneurship_organizer }}</p>
+                                        <p class="card-text">{{ ENTREPRENEURSHIP.Entrepreneurship_description }}</p>
+                                        <a href="#" class="btn btn-view-more" style="width: 50%">VIEW MORE></a>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                 {% if forloop.counter|divisibleby:3 %}
+                             </div><div class="row">
+
+                 {% endif %}
+            {% endfor %}
+         </div>
+     </div>
+</div>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const eventsTab = document.getElementById("events-tab");
+        const entrepreneurshipTab = document.getElementById("entrepreneurship-tab");
+        const eventsContent = document.getElementById("events-content");
+        const entrepreneurshipContent = document.getElementById("entrepreneurship-content");
+        const toggleImagesButton = document.getElementById("toggle-images");
+        const imageContainer = document.getElementById("image-text-container");
+        const internshipTab = document.getElementById("internship-tab");
+        const internshipContent = document.getElementById("internship-content");
+
+        // Initially hide both content sections and image container
+        eventsContent.style.display = "none";
+        entrepreneurshipContent.style.display = "none";
+        imageContainer.style.display = "none";
+        internshipContent.style.display = "none";
+
+        eventsTab.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Show events content and hide entrepreneurship and internship content
+            eventsContent.style.display = "block";
+            entrepreneurshipContent.style.display = "none";
+            internshipContent.style.display = "none";
+            imageContainer.style.display = "none";
+        });
+
+        entrepreneurshipTab.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Show entrepreneurship content and hide events and internship content
+            entrepreneurshipContent.style.display = "block";
+            eventsContent.style.display = "none";
+            internshipContent.style.display = "none";
+            imageContainer.style.display = "none";
+        });
+
+        internshipTab.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Show internship content and hide events and entrepreneurship content
+            internshipContent.style.display = "block";
+            eventsContent.style.display = "none";
+            entrepreneurshipContent.style.display = "none";
+            imageContainer.style.display = "none";
+        });
+
+        toggleImagesButton.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+
+            // Toggle the display of the image container
+            if (imageContainer.style.display === "none") {
+                imageContainer.style.display = "block";
+                internshipContent.style.display = "none";
+                entrepreneurshipContent.style.display = "none";
+                eventsContent.style.display = "none";
+            } else {
+                imageContainer.style.display = "none";
+            }
+        });
+    });
+</script>
+
+>>>>>>> 69ca65c (Initial commit)
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

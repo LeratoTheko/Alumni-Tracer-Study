@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Posting Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+        background-color: #000;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="container" style="margin-bottom: 100px; background-color: #000">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card" style="margin-bottom: 100px; background-color: #CFD8DC;">
+                    <div class="card-header">
+                        <h3 class="mb-0" style="margin-left: 200px;">Post an Internship</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="jobPostForm" method="post" action="{% url 'internship_posting' %}" novalidate>
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="jobTitle">Internship Title</label>
+                                <input type="text" class="form-control" id="jobTitle" name="job_title" required>
+                                <div class="invalid-feedback">Please enter a internship title.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" class="form-control" id="company" name="company" required>
+                                <div class="invalid-feedback">Please enter Company Name.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="workplaceType">Workplace Type</label>
+                                <select class="form-control" id="workplaceType" name="workplace_type" required>
+                                    <option value="">Select workplace type</option>
+                                    <option>On-site</option>
+                                    <option>Remote</option>
+                                    <option>Hybrid</option>
+                                </select>
+                                <div class="invalid-feedback">Please select workplace.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="jobLocation">Internship Location</label>
+                                <input type="text" class="form-control" id="jobLocation" name="job_location" required>
+                                <div class="invalid-feedback">Please enter Location of the internship.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="jobType">Internship Type</label>
+                                <select class="form-control" id="jobType" name="job_type" required>
+                                    <option value="">Select internship type</option>
+                                    <option>Full-time</option>
+                                    <option>Part-time</option>
+                                    <option>Contract</option>
+                                    <option>Temporary</option>
+                                    <option>Internship</option>
+                                </select>
+                                <div class="invalid-feedback">Please select Type of the internship.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="description-editor">Description</label>
+                                <textarea class="form-control" id="description-editor" name="description" rows="6" required></textarea>
+                                <div class="invalid-feedback">Please describe the work.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="skills">Skills</label>
+                                <input type="text" id="newSkillInput" placeholder="Add required skills">
+                                <button class="btn btn-secondary" type="button" onclick="addSkill()">Add</button>
+                                <div id="skills-list"></div>
+                                <input type="hidden" id="skillsInput" name="skills" value="">
+
+                            </div>
+                            <button type="submit" class="btn btn-secondary btn-lg" style="margin-left: 300px;">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#description-editor'), {
+                toolbar: [
+                    'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'undo', 'redo'
+                ],
+                placeholder: 'Enter your Job Description here...',
+                height: 300,
+                language: 'en'
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+        var skills = [];
+
+        function initSkills() {
+            var skillsList = document.getElementById('skills-list');
+            skillsList.innerHTML = '';
+            skills.forEach(function(skill) {
+                var skillTag = document.createElement('span');
+                skillTag.className = 'skill-tag';
+                skillTag.textContent = skill;
+                var removeBtn = document.createElement('button');
+                removeBtn.textContent = 'X';
+                removeBtn.onclick = function() { removeSkill(skill); };
+                skillTag.appendChild(removeBtn);
+                skillsList.appendChild(skillTag);
+            });
+            updateSkillsInput(); // Update the hidden input field with the current skills
+        }
+
+        function addSkill() {
+            var newSkillInput = document.getElementById('newSkillInput');
+            var newSkill = newSkillInput.value.trim();
+            if (newSkill && skills.length < 10) {
+                skills.push(newSkill);
+                initSkills();
+                newSkillInput.value = '';
+            }
+        }
+
+        function removeSkill(skillToRemove) {
+            skills = skills.filter(function(skill) { return skill !== skillToRemove; });
+            initSkills();
+        }
+
+        function updateSkillsInput() {
+            var skillsInput = document.getElementById('skillsInput');
+            skillsInput.value = skills.join(',');
+        }
+
+        window.onload = initSkills;
+    </script>
+</body>
+</html>

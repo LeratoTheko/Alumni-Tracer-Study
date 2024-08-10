@@ -1,0 +1,16 @@
+<!-- templates/admin/survey/survey/preview_form.html -->
+
+{% extends "admin/change_form.html" %}
+{% load i18n admin_urls %}
+
+{% block content %}
+  <div id="content-main">
+    <form id="survey_form" method="post" novalidate>
+      {% csrf_token %}
+      {{ formset.management_form }}
+      {% for form in formset %}
+        {{ form.as_p }}
+      {% endfor %}
+    </form>
+  </div>
+{% endblock %}

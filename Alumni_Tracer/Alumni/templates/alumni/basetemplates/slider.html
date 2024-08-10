@@ -1,0 +1,18 @@
+
+{% for row in sliderdata %}
+<div class="carsousel-inner" role="listbox">
+
+    <div class = "carousel-item {% if forloop.first %} active {% endif %}" style="background-image url ({{ row.image.url }});">
+        <div>
+            <div>
+                <h2> {{ row.tittle }} </h2>
+
+                <p> {{ row.description }} </p>
+
+                <div class="text-center"><a href="" class="btn-get-started">Readmore</a> </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endfor %}

@@ -1,0 +1,29 @@
+{% block content %}
+    {% if alumni_profiles %}
+        <div class="container mt-5">
+            <div class="card-container">
+                {% for alumni in alumni_profiles %}
+                    <div class="card">
+                        {% if alumni.cover_picture %}
+                            <img src="{{ alumni.cover_picture.url }}" class="cover-picture" alt="Cover Picture">
+                        {% endif %}
+                        {% if alumni.profile_picture %}
+                            <img src="{{ alumni.profile_picture.url }}" class="profile-picture" alt="Profile Picture">
+                        {% endif %}
+                        <div class="card-body" style="margin-bottom: 50px;">
+                            <h5 class="card-title fw-bold" style="margin-top: 30px;">{{ alumni.user.first_name }} {{ alumni.user.last_name }}</h5>
+                            <p class="card-text" style="margin-bottom: 20px; padding: 20px;">
+                                <strong>Employment Status:</strong> {{ alumni.employment_status }}<br>
+                                <strong>Company:</strong> {{ alumni.company_name }}<br>
+                                <strong>Skills:</strong> {{ alumni.skills }}
+                            </p>
+                            <a class="view-profile-link" href="{% url 'alumni_profile' alumni.user.username %}" style="margin-top: 25px;">View Profile</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <p>No alumni profiles found.</p>
+    {% endif %}
+{% endblock %}
