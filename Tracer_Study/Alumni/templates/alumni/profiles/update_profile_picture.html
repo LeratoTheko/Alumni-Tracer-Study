@@ -1,0 +1,8 @@
+<!-- update_profile_picture.html -->
+
+<h1>Update Profile Picture</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+</form>

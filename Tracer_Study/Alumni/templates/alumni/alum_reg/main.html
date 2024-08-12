@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Alumni Portal</title>
+
+    <link rel="shortcut icon" type="x-icon" href="{% static 'images/download.png'%}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+       #pdf-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+
+        .navigation {
+            position: absolute;
+            transform: translateY(-80%);
+            z-index: 999;
+        }
+        .prev-page,
+        .next-page {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+   .dropdown .IT-menu {
+    display: none;
+    position: absolute;
+    background-color: #FAFAFA;
+    border-radius: 1px;
+    width:30%;
+    margin-top:8;
+    margin-left:-300px;
+}
+
+   .dropdown .comm-menu {
+    display: none;
+    position: absolute;
+    background-color: #FAFAFA;
+    border-radius: 1px;
+    width:95%;
+    margin-top:20;
+}
+
+
+.dropdown:hover .IT-menu {
+    display: block;
+}
+
+.IT-menu li {
+    padding: 10px;
+}
+
+.IT-menu li a {
+    text-decoration: none;
+    color: #1A237E;
+    display: block;
+
+}
+
+.IT-menu li a:hover {
+    background-color: #;
+    border-radius: 5px;
+}
+
+.dropdown  .IT .text {
+    margin-left: -680px; /* Set margin-left as needed */
+}
+.dropdown  .comm .text {
+    margin-left: -770px; /* Set margin-left as needed */
+}
+
+
+            #pdf {
+                width: 70%;
+
+         }
+
+         body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif; /* Set desired font family */
+            overflow-x: hidden; /* Hide horizontal scroll bar */
+        }
+
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 40px;
+      }
+
+      .item {
+        text-align: center;
+      }
+
+      .item img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .container1 {
+        position: relative;
+        text-align: center;
+        color: white; /* Text color */
+        z-index:1;
+      }
+
+      .image {
+        width: 100%; /* Full width */
+        height: 800px; /* Maintain aspect ratio */
+      }
+
+
+      .text1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+      }
+  </style>
+</head>
+<body style="background-color: #CFD8DC;">
+    {% include 'alumni/alum_reg/nav.html' %}
+
+    {% block content %}
+        <div id="pdf-container">
+            <div class="container1"  style="margin-top:50px">
+                <img src="https://scontent.fmsu1-1.fna.fbcdn.net/v/t39.30808-6/438766683_847501360755217_9076847555674241526_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFOPolEQ1m_4nJtAY_C-YL_w6Dp-lu-W2jDoOn6W75baLMT33pgY4pLQAci6DT4BPGcPhge2s6N-Gcnf2NY6_UQ&_nc_ohc=bxGkuft6xdsQ7kNvgGGKyY4&_nc_ht=scontent.fmsu1-1.fna&oh=00_AYBDEo0pSiHHurtOB_gMcsFRbidiSu7-_P7FGeQQ4N1QqQ&oe=6668D1FB" alt="Image" class="image" style="height:500px">
+                    <div class="type" style=" border-top-right-radius: 50px; border-top-left-radius: 50px; width:90%; position: absolute; z-index:1;  margin-top:-180px; background-color:#fff; margin-left:70px; margin-right: 40px; height: auto; z-index:1000">
+                        <h3 style="margin-left:50px; color:#000; font-weight:bold; margin-top:30px; font-size:40px">Interview Technique</h3>
+
+                        <p style="color:#000; text-align: justify; padding:10px 70px; font-size: 22px;">Ahead of an interview, it is important to prepare effectively in order to give yourself the best chances of performing at your best on the day. Here are some points to consider.</p>
+                        <br>
+                        <a href="#" style="text-decoration: none; color:black; font-size:25px;padding:0px 20px; border-color:red; margin-left:70px; font-size:12; font-weight:bold" onclick="toggleContent(event)">Learn About the Sector and Organisation</a> <br>
+                        <div id="content" class="hidden-content" style="padding: 0px 20px; display:none; margin-right: 100px; " >
+                            <p style="color:#000; text-align: justify; margin-left:75px; font-size: 22px;">An interview won’t be a general knowledge test, but you should have an understanding of what is going on in the world at large.</p>
+                            <p style="color:#000; text-align: justify; margin-left:75px; font-size: 22px;">Most employers will expect you to display some understanding of their business, its size, its products/services and the sector in which it operates. Ask yourself:</p>
+                                 <ul style="color:#000; text-align: justify; margin-left:75px; font-size: 22px;">
+                                    <li>What do I know about this organisation?</li>
+                                    <li>What attracts me to this organisation?</li>
+                                    <li>Who are the organisation’s competitors?</li>
+                                    <li>How does this organisation relate to its competitors?</li>
+                                    <li>What have I done to find out more about this organisation?</li>
+                                    <li>What issues are affecting, or are likely to affect the sector?</li>
+                                    <li>How is the market changing or developing? How are the organisations in it responding?</li>
+
+                                 </ul>
+
+                            <p style="color:#000; text-align: justify; margin-left:75px; font-size: 22px;">It is a good idea to watch/listen to good news programmes or read a quality newspaper every day in the lead-up to your interview, and to think, or talk with friends, about current news stories and issues of importance, in case they come up on the day of interview. </p>
+
+
+                            <H6 style="font-weight:bold; margin-right:730px; margin-top:20px; color:black; font-size: 22px;">Useful research tools</H6>
+                            <p style="color:#000; text-align: justify; margin-left:75px; font-size: 22px;">You can use the internet to search for information from newspapers and journals relevant to the sector to which you are applying. More specifically, the following resources may be useful:</p>
+
+                                <ul style="color:#000; text-align: justify; margin-left:75px; font-size: 22px;">
+                                    <li><a href="https://news.google.com/home?hl=en-US&gl=US&ceid=US:en" target="_blank"> <span style="font-weight:bold; text-decoration: none; font-size: 22px;"> Google News</span></a> – aggregates somewhere in the region of 50,000 news services. You can also set up Google Alerts for particular keywords, e.g. a company name, so that you know when that company has been in the news around the world.</li>
+                                    <li>Employers’ websites.</li>
+                                    <li><a href="https://www.limkokwing.net/" target="_blank"> <span style="font-weight:bold; text-decoration: none"> Limkokwing University Career Opportunities (Limkokwing):</span></a>The primary website provides comprehensive information about the university, including career opportunities, professional services, and industry partnerships. You can explore these resources for job postings and professional connections relevant to Limkokwing University in Lesotho.</li>
+                                </ul>
+
+                        </div>
+                        <hr style="width:1200px; margin-left:70px; opacity:1px; height: 2px; background-color: #000;">
+
+                        <a href="#" style="text-decoration: none; color:black; font-size:22px;padding:0px 20px; border-color:red; margin-left:70px; font-size:12; font-weight:bold" onclick="toggleContent1(event)">Prepare Points to Make</a> <br>
+
+                        <div id="content1" class="hidden-content" style="padding:0px 20px; display:none; margin-right: 100px; font-size: 22px;">
+                            <p style="color:#000; text-align: justify; margin-left:75px;">Learning pre-formed answers by rote is not the most useful way to prepare for an interview. The responses are likely to sound false, and an unexpected question that does not fit your ‘script’ could leave you floundering. Instead, prepare a series of points in line with the job description / person specification, stressing those aspects of your experience, qualifications and skills that match the employer’s requirements most closely. As well as being prepared to explain how you fulfil these requirements, to demonstrate your motivation you must also be able to explain why you want this job with this organisation.</p>
+
+                            <p style="color:#000; text-align: justify; margin-left:75px;">It is important to remind yourself of the messages you have already conveyed to the recruiters in your CV/application form, and to be prepared to discuss anything you have told them. Read through your application, and imagine you are the interviewer. What questions would you ask in their shoes? Make sure that you can give at least one example (and preferably more) for each of the competencies (skills, experiences, knowledge and other attributes) that the employer is looking for, and that you can talk about those experiences in a positive way. Ask yourself:</p>
+
+                                 <ul style="color:#000; text-align: justify; margin-left:75px; font-size: 22px;">
+                                    <li>Why do I want the job?</li>
+                                    <li>What skills have I gained from my academic/employment/extra-curricular activities that are relevant for this role?</li>
+                                    <li>What are my ambitions?</li>
+                                    <li>What prompted me to make particular decisions/undertake certain courses of action?</li>
+                                    <li>What was my best/worst decision?</li>
+                                    <li>How have I learnt from these experiences?</li>
+                                    <li>What did I learn about myself when I…?</li>
+                                    <li>What would I identify as my main strengths/weaknesses?</li>
+                                 </ul>
+                        </div>
+                        <hr style="width:1200px; margin-left:70px; opacity:1px; height: 2px; background-color: #000;">
+
+                         <a href="#" style="text-decoration: none; color:black; font-size:22px;padding:0px 20px; border-color:red; margin-left:70px; font-size:12; font-weight:bold" onclick="toggleContent2(event)">Prepare Questions to Ask</a> <br>
+
+                        <div id="content2" class="hidden-content" style="padding:0px 20px; display:none; margin-right: 100px; font-size: 22px;" >
+                            <p style="color:#000; text-align: justify; margin-left:75px;">It is always a good move to prepare two or three questions that you would really like the interviewers to answer, as this will demonstrate confidence and a genuine interest in the job for which you have applied. Be careful, however, to avoid asking questions which have already been answered on the website, in the graduate brochure or in other literature sent out with the invitation to interview; also avoid asking about holidays or other benefits, as these are generally inappropriate at this stage of the recruitment process. You might want to ask:</p>
+
+
+                                 <ul style="color:#000; text-align: justify; margin-left:75px; font-size: 22px;">
+                                    <li>How will I be assessed/my performance appraised?</li>
+                                    <li>What factors distinguish successful employees from less successful ones?</li>
+                                    <li>I see (for example) that you are expanding into Africa – what would be the chances of my working there at some point?</li>
+                                    <li>I read that you might be merging with X – how, in your view, would that affect the current workings of the organisation?</li>
+                                    <li>What is the typical career progression for someone in this position?</li>
+                                    <li>Is there anything else I can provide to help you make your decision? or What other skills do you need that I haven't shown you?</li>
+                                    <li>Why do you like working for this company/doing this job?</li>
+                                 </ul>
+                            <p style="color:#000; text-align: justify; margin-left:75px;">If your questions have been answered in the course of the interview, say exactly that. If you are not invited to ask questions, or feel that there are key points you have not been given the chance to make, you can ask at the end of the interview whether now would be an appropriate time to raise this. If you feel there was an element to the interview where you didn’t show yourself in the best light, for example giving a weak answer to a question or talking over someone in a group interview, this can also be a good opportunity to show that self-awareness or offer an alternative example.</p>
+                        </div>
+                        <hr style="width:1200px; margin-left:70px; opacity:1px; height: 2px; background-color: #000;">
+
+                        <a href="#" style="text-decoration: none; color:black; font-size:22px;padding:0px 20px; border-color:red; margin-left:70px;  font-weight:bold" onclick="toggleContent3(event)">How to Deliver Answers</a> <br>
+
+                        <div id="content3" class="hidden-content" style="padding:0px 20px; display:none; margin-right: 100px; font-size: 22px;" >
+                            <h6 style="font-weight:bold; color:black; margin-right:790px; margin-top:30px; font-size: 22px;">Top tips</h6>
+
+                                 <ul style="color:#000; text-align: justify; margin-left:75px; font-size: 22px;">
+                                    <li>Be yourself: if you adopt a new persona for the interview, the result is likely to be insincere and transparent.</li>
+                                    <li>Think about the impact of your voice i.e. the pace, tone and volume (for more information on making an impact see our pages on how to make a good first impression).</li>
+                                    <li>Think about the structure of your answers: you might summarise at the end rather than trailing off.</li>
+                                    <li>Honesty is the best policy – and if it is discovered later that you have been dishonest, you are very likely to be dismissed. Admitting, for example, to a period of poor motivation during your A-Levels shows more integrity than blaming someone else for poor grades, so don't feel that you should 'cover up' these incidents - present them positively as learning experiences.</li>
+                                    <li>Be prepared to talk: avoid 'yes/no' answers and expand as often as possible, but don't over-communicate or waffle. Take your cue from the interviewer. Ask, "should I continue?" or "does that answer your question?" if you are unsure whether you have said enough.</li>
+                                    <li>Ask for clarification if you need it, or request a moment's thinking time, before tackling a particularly difficult question. You might also take a sip of water to create a natural pause. This is better than saying the first thing that comes into your head.</li>
+                                    <li>Be balanced in your answers, and try not to sound too obsessive about any one aspect of your life.</li>
+                                    <li>It’s OK to make your interviewers smile or laugh, but don’t try to be a comedian with every answer you give – you need to show your professional side.</li>
+                                    <li>No-one is allowed, by law, to ask you about your marital status, ethnic background, disability, sexual orientation or religious affiliation, unless it is a bona fide occupational qualification, so be aware that you can politely decline to answer such questions</li>
+
+                                 </ul>
+                            <H6 style="font-weight:bold; margin-right:670px; margin-top:20px; color:black; font-size: 22px;">Answering difficult questions</H6>
+                            <p style="color:#000; text-align: justify; margin-left:75px; font-size: 22px;">Questions often perceived as particularly difficult include those which appear to be an invitation to shoot yourself in the foot, such as: <a style="font-style:italic; font-size:14px"> what is your biggest weakness? What would you say has been your greatest failure?</a> When answering these questions relax, be honest, and emphasise the positive. These can be good opportunities to show that you understand yourself and that you’re proactive about working on yourself. Think about answers in advance so that you're not floundering on the day
+
+                            <p style="color:#000; text-align: justify; margin-left:75px; font-size: 22px;">Remember - no employer expects you to be completely perfect and self-awareness is preferable to blind arrogance! You might, for example, in answer to the question, “what is your biggest weakness?” say that, although you think well independently, you wouldn't be entirely happy in an environment where there was no teamwork; however you could then mention what coping strategies you would develop!
+                            <p style="color:#000; text-align: justify; margin-left:75px; font-size: 22px;">Or, you could tell them about your tendency to be nervous when presenting in front of large audiences and how, in an effort to overcome this, you have joined the debating society and now have strategies which help you communicate clearly to an audience when nervous.
+                            <p style="color:#000; text-align: justify; margin-left:75px; font-size: 22px;">Alternatively, you might say that your strengths lie in your ability to think problems through clearly, and that you can sometimes be frustrated with people who don't work logically, though you have learnt to appreciate the different insights that they can bring to a project.
+                            <p style="color:#000; text-align: justify; margin-left:75px; font-size: 22px;">These answers outline the weakness in each case, but turn the question around, so that you are able to stress both your strengths and your ability to learn from your mistakes.
+                            <p style="color:#000; text-align: justify; margin-left:75px; font-size: 22px;">Another line of questioning that can sometimes be daunting is if you are asked to think about yourself in a different way, so for example to compare yourself to an animal or biscuit (or colour, or piece of furniture). In this instance, think about the personal qualities that you want to emphasise in this situation, and explain your choice. A plain chocolate digestive might suggest a professionalism that a strawberry wafer possibly does not.
+                        </div>
+                        <hr style="width:1200px; margin-left:70px; opacity:1px; height: 2px; background-color: #000;">
+
+                         <a href="#" style="text-decoration: none; color:black; font-size:22px;padding:0px 20px; border-color:red; margin-left:40px; margin-bottom:20px; font-size:20px; font-weight:bold" onclick="toggleContent4(event)">Interview Practice</a> <br>
+
+                        <div id="content4" class="hidden-content" style="padding:0px 20px; font-size: 22px; display:none; margin-bottom: 100px; margin-right: 100px;" >
+                            <H6 style="font-weight:bold; margin-left:70px; margin-top:50px; color:black; font-size: 22px;">Video for interview practice</H6>
+                            <p style="color:#000; text-align: justify; margin-left:75px; font-size: 22px;">To see how you perform when faced with unknown competency question at interview, record yourself on a webcam, and use the video below as a prompt.</p>
+
+                            <p style="padding:20px 200px"> <iframe width="560" height="315" src="https://www.youtube.com/embed/guUOmfq303s?si=Nqiqq9eFZ0PMMLId" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                            <H6 style="font-weight:bold; margin-left:70px; margin-top:20px; color:black; font-size: 22px;">Example interview questions</H6>
+                            <p style="color:#000; text-align: justify; margin-left:75px;">The Careers Service has prepared a list of possible interview questions to help you in your preparation. You might want to try recording yourself answering some of these questions (using your phone or webcam). If you don’t have a way to record yourself, you could practice in front of a mirror, or ask a friend or relative to interview you using these questions and then give you some constructive feedback.
+
+                            <H6 style="font-weight:bold; margin-left:70px; margin-top:20px; color:black; font-size: 22px;">Mock interviews with an employer</H6>
+                            <p style="color:#000; text-align: justify; margin-left:75px;">During some terms we are able offer one-to-one mock interviews at the Careers Service with a real employer. Our interviewers are all professional recruiters from a variety of sectors and the interviews are generic - i.e. based on skills and generic criteria - rather than being based around a particular occupation or sector. (The only exception is solicitor-specific mock interviews with Law firms).
+
+
+                        </div>
+                        <hr style="width:1200px; margin-left:70px; opacity:1px; height: 2px; background-color: #000;">
+
+                    </div>
+
+              </div>
+        </div>
+    {% endblock content %}
+
+            <footer style="background-color: #616161;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="contact-info">
+                            <h3 class="fw-bold">Recommended Links </h3>
+                            <a href="#">Limkokwing Guide to Careers 2024 </a><br>
+                            <a href="#">See a Career Adviser </a><br>
+                            <a href="#">Sectors and Occupations  </a><br>
+                            <a href="#">Cover Letters </a><br>
+                            <a href="#">CVs</a><br>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h3 class="fw-bold">Targeted Information</h3>
+                        <a href="#">Information for Alumni </a><br>
+                        <a href="#">Information for Recruiters </a><br>
+                        <a href="#">Information for TVET Students </a><br>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    <script>
+          // Function to toggle the visibility of the content
+          function toggleContent(event) {
+            event.preventDefault();
+            var content = document.getElementById("content");
+            // Toggle the display style between 'none' and 'block'
+            content.style.display = content.style.display === 'none' ? 'block' : 'none';
+
+          }
+
+           function toggleContent1(event) {
+            event.preventDefault();
+            var content1 = document.getElementById("content1");
+            // Toggle the display style between 'none' and 'block'
+            content1.style.display = content1.style.display === 'none' ? 'block' : 'none';
+          }
+
+          function toggleContent2(event) {
+            event.preventDefault();
+            var content2 = document.getElementById("content2");
+            // Toggle the display style between 'none' and 'block'
+            content2.style.display = content2.style.display === 'none' ? 'block' : 'none';
+          }
+
+          function toggleContent3(event) {
+            event.preventDefault();
+            var content3 = document.getElementById("content3");
+            // Toggle the display style between 'none' and 'block'
+            content3.style.display = content3.style.display === 'none' ? 'block' : 'none';
+          }
+          function toggleContent4(event) {
+            event.preventDefault();
+            var content4 = document.getElementById("content4");
+            // Toggle the display style between 'none' and 'block'
+            content4.style.display = content4.style.display === 'none' ? 'block' : 'none';
+          }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="{% static 'images/download.png'%}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employers List</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'stylesheet/navbar.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .card {
+            background-color: #000;
+            color: white;
+            margin-bottom: 20px;
+            width: calc(35% - 20px);
+            max-width: 350px; /* Limit the max width of the card */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .card h5, .card p, .card a {
+            color: white;
+        }
+        .card a {
+            text-decoration: underline;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 120px;
+            justify-content: flex-start; /* Align cards to the start of the container */
+        }
+    </style>
+</head>
+<body style="background-color: #CFD8DC;">
+    <div class="container mt-5" style="margin-top: 20px; margin-bottom: 20px; margin-left: 150px; margin-right: 80px;">
+        <h2 class="mb-4" style="margin-left: 600px; margin-bottom: 400px;">Available Jobs</h2>
+
+        {% load humanize %}
+        <div class="card-container">
+            {% for internship in internship_posting %}
+                <div class="card">
+                    <div class="card-body">
+                        <label class="card-title" style="margin-left: 80px; font-weight: bold; font-size: 15px">{{ internship.job_title }}</label>
+                        <p class="card-text">
+                            <strong><p>Company:</strong> {{ internship.company }}
+                            <p><strong>Location:</strong> {{ internship.job_location }}</p>
+                            <p><strong>Job Type:</strong> {{ internship.job_type }}</p>
+                            <p><strong>Job :</strong> {{ internship.description | safe }}</p>
+                            <p><strong>Job Description:</strong> {{ internship.description | safe }}</p>
+                            <p><strong>Skills:</strong> {{ internship.skills }}</p>
+                            <strong>Posted:</strong> <label style="color: red; font-weight: italic;">{{ internship.created_at|naturaltime }}</label>
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!-- internship_listing_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Internship Listings</title>
+</head>
+<body>
+    <h1>Internship Listings</h1>
+    <ul>
+        {% for listing in listings %}
+            <li><a href="{% url 'internship-detail' listing.pk %}">{{ listing.job_title }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'internship-create' %}">Create New Listing</a>
+</body>
+</html>

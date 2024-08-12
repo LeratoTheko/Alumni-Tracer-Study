@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="{% static 'images/download.png' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of all available jobs</title>
+
+    <link rel="stylesheet" href="{% static 'stylesheet/navbar.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        .card {
+            background-color: #000;
+            color: white;
+            margin-bottom: 20px;
+            width: calc(30% - 20px);
+            margin-right: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: flex-start;
+            margin-right: -20px;
+            gap: 60px;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .card h5, .card p, .card a {
+            color: white;
+        }
+        .card a {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body style="background-color: #CFD8DC;">
+
+    {% include 'alumni/Job/employers_navbar.html' %}
+
+    <form id="search-form" class="d-flex flex-row align-items-center" role="search" action="{% url 'search-available-jobs' %}" method="get" style="margin-top: 50px; margin-left: 600px;">
+        <div class="form-group mb-2">
+            <input id="s_job" class="form-control me-2 fw-bold" type="search" name="s_job" placeholder="Search Jobs" aria-label="Search" style="width: 400px;">
+        </div>
+        <button class="btn bg-black btn-lg" style="color: #fff;" type="submit">Search</button>
+    </form>
+
+    {% load humanize %}
+    <div class="container mt-5" style="margin-top: 20px; margin-bottom: 20px; margin-left: 160px; margin-right: 80px;">
+        <h2 class="mb-4" style="font-weight: bold; text-align: center;">Available Jobs</h2>
+
+        {% if available_jobs %}
+            <div class="card-container">
+                {% for job_posting in available_jobs %}
+                    <div class="card">
+                        <div class="card-body">
+                            <label class="card-title" style="margin-left: 80px; font-weight: bold; font-size: 15px">{{ job_posting.job_title }}</label>
+                            <p class="card-text">
+                                <strong>Company:</strong> {{ job_posting.company }}<br>
+                                <strong>Location:</strong> {{ job_posting.job_location }}<br>
+                                <strong>Job Type:</strong> {{ job_posting.job_type }}<br>
+                                <strong>Job Description:</strong> {{ job_posting.description|safe }}<br>
+                                <strong>Skills:</strong> {{ job_posting.skills }}<br>
+                                <strong>Deadline:</strong> {{ job_posting.deadline }}<br>
+                                <strong>Posted:</strong> <label style="color: red; font-weight: italic;">{{ job_posting.created_at|naturaltime }}</label>
+                            </p>
+                            <a href="#" class="card-link" style="margin-left: 80px;" data-target="#job-details-{{ job_posting.id }}">View Job</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No jobs found.</p>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.card-link').click(function(e) {
+                e.preventDefault();
+                var targetId = $(this).data('target');
+                $(targetId).toggle();
+            });
+        });
+    </script>
+</body>
+</html>
