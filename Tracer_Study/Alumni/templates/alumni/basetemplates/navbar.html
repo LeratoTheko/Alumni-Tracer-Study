@@ -1,228 +1,149 @@
-{% load static%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
 
-<link rel="stylesheet" href="{% static 'stylesheet/navbar.css' %}">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Load your custom stylesheet -->
+    <link rel="stylesheet" href="{% static 'stylesheet/navbar.css' %}">
 
-<div id="site-navbar">
-    <nav class="navbar bg-black" data-bs-theme="dark">
-        <div class="container-fluid">
-            <a class="navbar-brand grid gap-0 column-gap-3 fw-bold">
-                <img src="{% static 'images/download.png'%}" style="margin-right: 20px;" alt="Logo" width="150" height="70" class="d-inline-block align-text-middle">
+    <!-- Load Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-                LIMKOKWING UNIVERSITY OF CREATIVE TECHNOLOGY
-            </a>
+    <style>
+        /* Custom styles for navbar */
+        .navbar-brand img {
+            margin-right: 20px;
+        }
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff;
+        }
+        .dropdown-menu .dropdown-item:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div id="site-navbar">
+        <!-- Primary Navbar -->
+        <nav class="navbar bg-black navbar-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center fw-bold">
+                    <img src="{% static 'images/download.png' %}" alt="Logo" width="150" height="70" class="d-inline-block align-text-middle">
+                    LIMKOKWING UNIVERSITY OF CREATIVE TECHNOLOGY
+                </a>
 
-            <a class="navbar-brand"></a>
-            <form class="d-flex" role="search">
-                <a class="navbar-brand"></a>
-                <a class="navbar-brand"></a>
-                <a class="navbar-brand"></a>
-                <a href="Career-services" class="btn btn-light fw-bold" style="margin-right:20px; border-top-left-radius: 10px; border-bottom-right-radius: 10px;">CAREER SERVICES</a>
-                <a href="about" class="btn btn-light fw-bold" style="border-top-left-radius: 10px; border-bottom-right-radius: 10px;">ABOUT US</a>
-            </form>
-        </div>
-    </nav>
+                <!-- Right-side buttons -->
+                <div class="d-flex">
+                    <a href="Career-services" class="btn btn-light fw-bold" style="margin-right:20px; border-radius: 10px;">CAREER SERVICES</a>
+                    <a href="about" class="btn btn-light fw-bold" style="border-radius: 10px;">ABOUT US</a>
+                </div>
+            </div>
+        </nav>
 
+        <!-- Secondary Navbar -->
+        <nav class="navbar navbar-expand-lg bg-black navbar-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-
-    <nav class="navbar navbar-tertiary navbar-expand-lg bg-black fw-bold navbar-dark" data-bs-theme="dark">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 70px; margin-right: 300px;">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 200px;">
-                    <li class="nav-item" >
-                        <a class="nav-link" aria-current="page" href="{% url 'home' %}" style="color: #fff;">HOME</a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" style="color: #fff;" href="entrepreneurship" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            ALUMS
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="alumni_login">
-                                    Connect with your community
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="alumni_login">
-                                    Connect with recruiters
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" style="color: #fff;" href="analysis" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            TRACER STUDY
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="perform-compare">
-                                    Faculty Comparisons
-                                </a>
-                            </li>
-
-
-                            <li>
-                                <a class="dropdown-item" href="faculty-Aid">
-                                    Faculty of Innovation and Design
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="business-and-globalization-faculty">
-                                    Faculty of Business and Globalization
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="Architecture-technology">
-                                    Faculty of Architecture and Build Environment
-                                </a>
-                            </li>
-
-
-                            <li>
-                                <a class="dropdown-item" href="creative-tourism">
-                                    Faculty of Creativity in Tourism and Hospitality
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="communication-media">
-                                    Faculty of Communication, Media and Broadcasting
-                                </a>
-                            </li>
-
-                          <li>
-                              <a class="dropdown-item" href="information-technology">
-                                  Faculty of Information Communication and Technology
-                              </a>
-                          </li>
-                  </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" style="color: #fff;" href="employers" >
-                        EMPLOYERS
-                    </a>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" style="color: #fff;" href="entrepreneurship" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        JOBSTRATEGIES
-                    </a>
-
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a class="dropdown-item" href="interviews">
-                                Interviews
-                            </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">HOME</a>
                         </li>
 
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                Grow your business idea
+                        <!-- Dropdown for Alums -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                ALUMS
                             </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="alumni_login">Connect with your community</a></li>
+                                <li><a class="dropdown-item" href="alumni_login">Connect with recruiters</a></li>
+                            </ul>
                         </li>
 
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                Connect with your community
+                        <!-- Dropdown for Tracer Study -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="tracerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                TRACER STUDY
                             </a>
+                            <ul class="dropdown-menu" aria-labelledby="tracerDropdown">
+                                <li><a class="dropdown-item" href="perform-compare">Faculty Comparisons</a></li>
+                                <li><a class="dropdown-item" href="faculty-Aid">Faculty of Innovation and Design</a></li>
+                                <li><a class="dropdown-item" href="business-and-globalization-faculty">Faculty of Business and Globalization</a></li>
+                                <li><a class="dropdown-item" href="Architecture-technology">Faculty of Architecture and Build Environment</a></li>
+                                <li><a class="dropdown-item" href="creative-tourism">Faculty of Creativity in Tourism and Hospitality</a></li>
+                                <li><a class="dropdown-item" href="communication-media">Faculty of Communication, Media and Broadcasting</a></li>
+                                <li><a class="dropdown-item" href="information-technology">Faculty of Information Communication and Technology</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="employers">EMPLOYERS</a>
+                        </li>
+
+                        <!-- Dropdown for Job Strategies -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="jobStrategiesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                JOB STRATEGIES
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="jobStrategiesDropdown">
+                                <li><a class="dropdown-item" href="interviews">Interviews</a></li>
+                                <li><a class="dropdown-item" href="#">Grow your business idea</a></li>
+                                <li><a class="dropdown-item" href="#">Connect with your community</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Dropdown for Students -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="studentsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                STUDENTS
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="studentsDropdown">
+                                <li><a class="dropdown-item" href="#">Career Advice</a></li>
+                                <li><a class="dropdown-item" href="current_students_analysis">Current Students</a></li>
+                                <li><a class="dropdown-item" href="prospective_students">Prospective Students</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Dropdown for LEAP -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="leapDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                LEAP
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="leapDropdown">
+                                <li><a class="dropdown-item" href="#">Entrepreneurship Events</a></li>
+                                <li><a class="dropdown-item" href="#">Grow Your Business Idea</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Find an internship</a></li>
+                                <li><a class="dropdown-item" href="employers_login">Offer an internship</a></li>
+                                <li><a class="dropdown-item" href="#">About internship Office</a></li>
+                            </ul>
                         </li>
                     </ul>
-                </li>
 
+                    <!-- Search form -->
+                    <form class="d-flex" role="search" method="get">
+                        <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-light" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
 
-               <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" style="color: #fff;" href="entrepreneurship" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    STUDENTS
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            Career Advice
-                        </a>
-                    </li>
-
-                    <li>
-                        <a class="dropdown-item" href="current_students_analysis">
-                            Current Students
-                        </a>
-                    </li>
-
-
-                    <li>
-                        <a class="dropdown-item" href="prospective_students">
-                            Prospective Students
-                        </a>
-                    </li>
-                  </ul>
-              </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" style="color: #fff;" href="entrepreneurship" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                LEAP
-              </a>
-
-              <ul class="dropdown-menu">
-                <li>
-                    <a class="dropdown-item" href="#">
-                        Entrepreneurship Events
-                    </a>
-                </li>
-
-                <li>
-                    <a class="dropdown-item" href="#">
-                        Grow Your Business Idea
-                    </a>
-                </li>
-
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-
-                <li>
-                    <a class="dropdown-item" href="#">
-                        Find an internship
-                    </a>
-                </li>
-
-                <li>
-                    <a class="dropdown-item" href="employers_login">
-                        Offer an internship
-                    </a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="#">
-                        About internship Office
-                    </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-
-          <form class="form-inline my-2 my-lg-0" method="get">
-              <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search" aria-label="Search">
-              <button class="btn btn-light my-2 my-sm-0" id=".search-button" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
-    </nav>
-</div>
-
-
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchButton = document.querySelector('.search-button');
-            const homeLink = document.querySelector('.home');
+            const homeLink = document.querySelector('.nav-link[href="{% url 'home' %}"]');
 
             homeLink.addEventListener('click', function() {
                 searchButton.style.display = 'block'; // Show the search button
@@ -232,3 +153,5 @@
             searchButton.style.display = 'none';
         });
     </script>
+</body>
+</html>
