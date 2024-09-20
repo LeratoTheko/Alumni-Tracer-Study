@@ -1,12 +1,15 @@
 
 
 {% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="{% static 'stylesheet/navbar.css' %}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
+</head>
 <div id="site-navbar">
     <nav class="navbar bg-black" data-bs-theme="dark">
         <div class="container-fluid">
@@ -21,8 +24,10 @@
                 <a class="navbar-brand"></a>
                 <a class="navbar-brand"></a>
                 <a class="navbar-brand"></a>
-                <a href="Career-services" class="btn btn-light fw-bold" style="margin-right:20px; border-top-left-radius: 10px; border-bottom-right-radius: 10px;">CAREER SERVICES</a>
-                <a href="about" class="btn btn-light fw-bold" style="border-top-left-radius: 10px; border-bottom-right-radius: 10px;">ABOUT US</a>
+                 <div class="d-flex ms-lg-3 mt-3 mt-lg-0">
+                    <a href="Career-services" class="btn btn-light fw-bold me-2" style="border-radius: 10px;">CAREER SERVICES</a>
+                    <a href="about" class="btn btn-light fw-bold" style="border-radius: 10px;">ABOUT US</a>
+                </div>
             </form>
         </div>
     </nav>
