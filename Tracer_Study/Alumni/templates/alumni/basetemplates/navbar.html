@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,119 +25,111 @@
     </style>
 </head>
 <body>
-    <div id="site-navbar">
-        <!-- First Navbar: Logo and Action Buttons -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-            <div class="container-fluid">
-                <a class="navbar-brand d-flex align-items-center fw-bold" href="#">
-                    <img src="{% static 'images/download.png' %}" alt="Logo" width="150" height="70" class="d-inline-block align-text-middle">
-                    LIMKOKWING UNIVERSITY
-                </a>
-
-                <div class="d-flex ms-auto">
-                    <a href="Career-services" class="btn btn-light fw-bold mx-2" style="border-radius: 10px;">CAREER SERVICES</a>
-                    <a href="about" class="btn btn-light fw-bold" style="border-radius: 10px;">ABOUT US</a>
-                </div>
+    <!-- First Navbar: Logo and Action Buttons -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center fw-bold" href="#">
+                <img src="{% static 'images/download.png' %}" alt="Logo" width="150" height="70" class="d-inline-block align-text-middle">
+                LIMKOKWING UNIVERSITY
+            </a>
+            <div class="d-flex ms-auto">
+                <a href="Career-services" class="btn btn-light fw-bold mx-2" style="border-radius: 10px;">CAREER SERVICES</a>
+                <a href="about" class="btn btn-light fw-bold" style="border-radius: 10px;">ABOUT US</a>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <!-- Second Navbar: Navigation Menu -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-            <div class="container-fluid">
-                <!-- Toggler for mobile view -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <!-- Second Navbar: Navigation Menu -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container-fluid">
+            <!-- Toggler for mobile view -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <!-- Collapsible content -->
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <!-- Aligning navbar items to center-right -->
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home' %}">HOME</a>
-                        </li>
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">HOME</a>
+                    </li>
+                    <!-- Dropdown for Alums -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="alumsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ALUMS
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="alumsDropdown">
+                            <li><a class="dropdown-item" href="alumni_login">Connect with your community</a></li>
+                            <li><a class="dropdown-item" href="alumni_login">Connect with recruiters</a></li>
+                        </ul>
+                    </li>
+                    <!-- Dropdown for Tracer Study -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="tracerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            TRACER STUDY
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="tracerDropdown">
+                            <li><a class="dropdown-item" href="perform-compare">Faculty Comparisons</a></li>
+                            <li><a class="dropdown-item" href="faculty-Aid">Faculty of Innovation and Design</a></li>
+                            <li><a class="dropdown-item" href="business-and-globalization-faculty">Faculty of Business and Globalization</a></li>
+                            <li><a class="dropdown-item" href="Architecture-technology">Faculty of Architecture and Build Environment</a></li>
+                            <li><a class="dropdown-item" href="creative-tourism">Faculty of Creativity in Tourism and Hospitality</a></li>
+                            <li><a class="dropdown-item" href="communication-media">Faculty of Communication, Media and Broadcasting</a></li>
+                            <li><a class="dropdown-item" href="information-technology">Faculty of Information Communication and Technology</a></li>
+                        </ul>
+                    </li>
+                    <!-- Employers Link -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="employers">EMPLOYERS</a>
+                    </li>
+                    <!-- Dropdown for Job Strategies -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="jobStrategiesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            JOB STRATEGIES
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="jobStrategiesDropdown">
+                            <li><a class="dropdown-item" href="interviews">Interviews</a></li>
+                            <li><a class="dropdown-item" href="#">Grow your business idea</a></li>
+                            <li><a class="dropdown-item" href="#">Connect with your community</a></li>
+                        </ul>
+                    </li>
+                    <!-- Dropdown for Students -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="studentsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            STUDENTS
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="studentsDropdown">
+                            <li><a class="dropdown-item" href="#">Career Advice</a></li>
+                            <li><a class="dropdown-item" href="current_students_analysis">Current Students</a></li>
+                            <li><a class="dropdown-item" href="prospective_students">Prospective Students</a></li>
+                        </ul>
+                    </li>
+                    <!-- Dropdown for LEAP -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="leapDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            LEAP
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="leapDropdown">
+                            <li><a class="dropdown-item" href="#">Entrepreneurship Events</a></li>
+                            <li><a class="dropdown-item" href="#">Grow Your Business Idea</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Find an internship</a></li>
+                            <li><a class="dropdown-item" href="employers_login">Offer an internship</a></li>
+                            <li><a class="dropdown-item" href="#">About internship Office</a></li>
+                        </ul>
+                    </li>
+                </ul>
 
-                        <!-- Dropdown for Alums -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="alumsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                ALUMS
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="alumsDropdown">
-                                <li><a class="dropdown-item" href="alumni_login">Connect with your community</a></li>
-                                <li><a class="dropdown-item" href="alumni_login">Connect with recruiters</a></li>
-                            </ul>
-                        </li>
-
-                        <!-- Dropdown for Tracer Study -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="tracerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                TRACER STUDY
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="tracerDropdown">
-                                <li><a class="dropdown-item" href="perform-compare">Faculty Comparisons</a></li>
-                                <li><a class="dropdown-item" href="faculty-Aid">Faculty of Innovation and Design</a></li>
-                                <li><a class="dropdown-item" href="business-and-globalization-faculty">Faculty of Business and Globalization</a></li>
-                                <li><a class="dropdown-item" href="Architecture-technology">Faculty of Architecture and Build Environment</a></li>
-                                <li><a class="dropdown-item" href="creative-tourism">Faculty of Creativity in Tourism and Hospitality</a></li>
-                                <li><a class="dropdown-item" href="communication-media">Faculty of Communication, Media and Broadcasting</a></li>
-                                <li><a class="dropdown-item" href="information-technology">Faculty of Information Communication and Technology</a></li>
-                            </ul>
-                        </li>
-
-                        <!-- Employers Link -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="employers">EMPLOYERS</a>
-                        </li>
-
-                        <!-- Dropdown for Job Strategies -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="jobStrategiesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                JOB STRATEGIES
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="jobStrategiesDropdown">
-                                <li><a class="dropdown-item" href="interviews">Interviews</a></li>
-                                <li><a class="dropdown-item" href="#">Grow your business idea</a></li>
-                                <li><a class="dropdown-item" href="#">Connect with your community</a></li>
-                            </ul>
-                        </li>
-
-                        <!-- Dropdown for Students -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="studentsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                STUDENTS
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="studentsDropdown">
-                                <li><a class="dropdown-item" href="#">Career Advice</a></li>
-                                <li><a class="dropdown-item" href="current_students_analysis">Current Students</a></li>
-                                <li><a class="dropdown-item" href="prospective_students">Prospective Students</a></li>
-                            </ul>
-                        </li>
-
-                        <!-- Dropdown for LEAP -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="leapDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                LEAP
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="leapDropdown">
-                                <li><a class="dropdown-item" href="#">Entrepreneurship Events</a></li>
-                                <li><a class="dropdown-item" href="#">Grow Your Business Idea</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Find an internship</a></li>
-                                <li><a class="dropdown-item" href="employers_login">Offer an internship</a></li>
-                                <li><a class="dropdown-item" href="#">About internship Office</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <!-- Right-side Search Form -->
-                    <form class="d-flex" role="search" method="get">
-                        <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-light" type="submit">Search</button>
-                    </form>
-                </div>
+                <!-- Right-side Search Form -->
+                <form class="d-flex" role="search" method="get">
+                    <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-light" type="submit">Search</button>
+                </form>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
+
+    <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
