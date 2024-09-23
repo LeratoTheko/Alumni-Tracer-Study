@@ -25,13 +25,18 @@
 <body>
 
 <div id="site-navbar">
-    <nav class="navbar bg-black" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-black navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center fw-bold">
                 <img src="{% static 'images/download.png' %}" alt="Logo" width="150" height="70">
                 LIMKOKWING UNIVERSITY OF CREATIVE TECHNOLOGY
             </a>
             
+            <!-- Navbar Toggler for mobile view -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
             <form class="d-flex ms-auto">
                 <a href="career-service" class="btn btn-light fw-bold me-2" style="border-radius: 10px;">CAREER SERVICES</a>
                 <a href="about" class="btn btn-light fw-bold" style="border-radius: 10px;">ABOUT US</a>
@@ -39,15 +44,9 @@
         </div>
     </nav>
 
-    <!-- Add the navbar-toggler button -->
-    <nav class="navbar navbar-expand-lg bg-black fw-bold navbar-dark" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-black fw-bold navbar-dark">
         <div class="container-fluid">
-            <!-- Toggler button for mobile screens -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Wrap the navbar items in collapse div -->
+            <!-- Add collapse div for mobile support -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
