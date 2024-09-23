@@ -1912,27 +1912,6 @@ def alumni_logout(request):
     return redirect(reverse_lazy('alumni_login'))
 
 
-@receiver(post_save, sender=InternshipPosting)
-def send_internship_notification(sender, instance, created, **kwargs):
-    if created:
-        subject = 'New Internship Opportunity Available'
-        template = 'alumni/email/internship_notifications.html'
-        context = {'internship': instance}
-        html_message = render_to_string(template, context)
-        plain_message = strip_tags(html_message)
-
-        # Retrieve the list of emails from ProfessionalDetails
-        emails = ProfessionalDetails.objects.filter(employment_status='employed').values_list('email', flat=True)
-
-        send_mail(
-            subject,
-            plain_message,
-            'lejoneedward1@gmail.com',
-            emails,
-            html_message=html_message,
-        )
-
-
 def internship_detail_in_alumni_portal(request, internship_id):
     internship = get_object_or_404(InternshipPosting, id=internship_id)
     return render(request, 'alumni/alum_reg/internship_detail.html', {'internship': internship})
